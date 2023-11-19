@@ -21,17 +21,17 @@
               </li>
 
               <li>
-                <a href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-calendar2-event"></i> <span class="ms-1 d-none d-sm-inline">Booking</span>
-                </a>
-              </li>
-
-
-              <li>
                 <a  href="#" class="nav-link px-0 align-middle">
                   <i class="fs-4 bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Message</span>
                 </a>
               </li>
+
+              <li>
+                <a href="#" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-geo-alt"></i> <span class="ms-1 d-none d-sm-inline">Map</span>
+                </a>
+              </li>
+
 
               <li>
                 <a  href="#" class="nav-link px-0 align-middle">
