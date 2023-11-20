@@ -7,6 +7,8 @@ import DentistDashboard from '../components/DentistDashboard.vue'
   
    <main >
     <DentistDashboard />
+
+    
     </main>
   
 </template>
