@@ -22,7 +22,7 @@
 
               <li>
                 <a  href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Message</span>
+                  <i class="fs-4 bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Notification</span>
                 </a>
               </li>
 
@@ -35,7 +35,7 @@
 
               <li>
                 <a  href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Information</span>
+                  <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Introduction</span>
                 </a>
               </li>
               <li>
