@@ -19,7 +19,8 @@
             <th scope="col">Item</th>
             <th scope="col">Patient</th>
             <th scope="col">Doctor</th>
-            <th scope="col">Actions</th>
+            <th scope="col">Action1</th>
+            <th scope="col">Action2</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +32,9 @@
             <td>{{ iterm.patient }}</td>
             <td>{{ iterm.doctor }}</td>
             
+            <td>
+              <button class="btn btn-primary" @click="updateIterms(iterm.id)">Update</button>
+            </td>
             <td>
               <button class="btn btn-danger" @click="cancelIterms(iterm.id)">Cancel</button>
             </td>
@@ -60,6 +64,12 @@ export default {
     cancelIterms(itermId) {
       
       this.Iterms = this.Iterms.filter(iterm => iterm.id !== itermId);
+    },
+    updateItem(itemId) {
+      const item = this.items.find(item => item.id === itemId);
+      if (item) { 
+        item.item = 'updatedItem'; 
+      }
     },
   },
 };
