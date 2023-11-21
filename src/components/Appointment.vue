@@ -90,8 +90,10 @@ export default {
   },
   methods: {
     cancelIterms(itermId) {
-      
+      const iterm = this.Iterms.find(i => i.id === itermId);
+      if (iterm && window.confirm(`Are you sure cancel ${iterm.patient}'s appointment？`)) {
       this.Iterms = this.Iterms.filter(iterm => iterm.id !== itermId);
+      }
     },
 
     updateItem(itemId) {
