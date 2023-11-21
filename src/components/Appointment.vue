@@ -42,6 +42,32 @@
         </tbody>
       </table>
     </div>
+
+    <div v-if="showModal" class="modal" style="display:block;">
+    <div class="modal-content  ">
+      <span class="close" @click="closeModal">&times;</span>
+      <h1 >Appointment Details</h1>
+      <h5>Patient: {{ selectedItem.patient }}</h5>
+      <h5>Item:{{ selectedItem.item}}</h5>
+      <form @submit.prevent="submitUpdate">
+        <div>
+          <label>Date:</label>
+          <input v-model="selectedItem.date" type="date" />
+        </div>
+        <div>
+          <label>Time:</label>
+          <input v-model="selectedItem.time" type="time" />
+        </div>
+        <div>
+          <label>Doctor:</label>
+          <input v-model="selectedItem.doctor" type="text" />
+        </div>
+        
+        <button class ="btn btn-primary" type="submit">Update</button>
+      </form>
+    </div>
+  </div>
+
   </div>
 </template>
 
@@ -58,6 +84,8 @@ export default {
 
    
       ],
+      showModal: false,
+      selectedItem: null,
     };
   },
   methods: {
@@ -65,11 +93,28 @@ export default {
       
       this.Iterms = this.Iterms.filter(iterm => iterm.id !== itermId);
     },
+
     updateItem(itemId) {
       const item = this.items.find(item => item.id === itemId);
       if (item) { 
         item.item = 'updatedItem'; 
       }
+    },
+
+    updateIterms(itermId) {
+      this.selectedItem = this.Iterms.find(iterm => iterm.id === itermId);
+      if (this.selectedItem) {
+        this.showModal = true;
+      }
+    },
+
+    closeModal() {
+      this.showModal = false;
+    },
+
+    submitUpdate() {
+      
+      this.showModal = false;
     },
   },
 };
@@ -101,5 +146,76 @@ export default {
 .table td {
   font-size: 1.25rem; 
 }
+
+
+/* for  appointemnt item modal detail */
+.modal {
+    display: block; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4); 
+}
+
+.modal-content {
+    background-color: #e2dcdc;
+    margin: 15% auto; 
+    padding: 30px;
+    border: 1px solid #888;
+    max-width: 600px; 
+    min-width: 300px;
+    width: 80%; 
+}
+
+.modal-content form div {
+    margin-bottom: 25px; 
+  }
+
+  .modal-content input[type="date"],
+  .modal-content input[type="time"],
+  .modal-content input[type="text"] {
+    width: 100%;
+    padding: 8px; 
+    border: 1px solid #ccc; 
+    border-radius: 4px; 
+  }
+
+  .modal-content input[type="date"]:focus,
+  .modal-content input[type="time"]:focus,
+  .modal-content input[type="text"]:focus {
+    outline: none;
+    border-color: #4A90E2; 
+    box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); 
+  }
+
+  .modal-content h1 {
+    margin-bottom: 20px; 
+  }
+
+  .modal-content h5 {
+    margin-top: 5px; 
+    margin-bottom: 20px; 
+  }
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+ 
+
 </style>
 
