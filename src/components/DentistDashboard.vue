@@ -37,6 +37,11 @@ c<template>
                   <i class="fs-4 bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Sign out</span> 
                 </a>
               </li>
+              <li>
+                <a   @click="showContent('booking')" href="#" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Booking</span>
+                </a>
+              </li>
 
             </ul>
           </div>
@@ -56,6 +61,9 @@ c<template>
           <Introduction />
         </div>
 
+        <div v-if="currentContent === 'booking'">
+          <Booking />
+        </div>
     
     
       </div>
@@ -72,6 +80,7 @@ c<template>
   import Appointment from './Appointment.vue';
   import Notification from './Notification.vue';
   import Introduction from './Introduction.vue';
+  import Booking from './Booking.vue';
   
 
 
@@ -81,7 +90,8 @@ c<template>
     
       Appointment,
       Notification,
-      Introduction
+      Introduction,
+      Booking
 
     },
     setup() {
