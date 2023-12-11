@@ -32,8 +32,8 @@ c<template>
                   <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Introduction</span>
                 </a>
               </li>
-              <li>
-                <a  href="#" class="nav-link px-0 align-middle">
+              <li
+                <a @click="logout " href="#" class="nav-link px-0 align-middle">
                   <i class="fs-4 bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Sign out</span> 
                 </a>
               </li>
@@ -81,6 +81,7 @@ c<template>
   import Notification from './Notification.vue';
   import Introduction from './Introduction.vue';
   import Booking from './Booking.vue';
+  import { getToken, logout} from '@/utils/auth';
   
 
 
@@ -101,16 +102,21 @@ c<template>
         currentContent.value = contentName;
       };
 
+      const token = getToken();
+      const isUserLoggedIn = !!token;  // check if the user is logged with token
+
       return {
         currentContent,
-        showContent
+        showContent,
+        logout,
+        isUserLoggedIn
       };
     },
         methods: {
 
-            logout() {
-                this.$router.push('/');
-            }
+          logout() {
+            logout();
+          }
     
     }
 }

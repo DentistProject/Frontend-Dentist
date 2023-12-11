@@ -14,7 +14,7 @@
             <input class="form-control" type="password" name="password" v-model="password" placeholder="Password">
           </div>
           <div class="form-group">
-            <button class="btn btn-success btn-block btn-info bt" type="submit">Login</button>
+            <button class="btn btn-success btn-block btn-info bt" @click="login">Login</button>
           </div>
         </form>
       </div>
@@ -22,6 +22,7 @@
   </template>
   
   <script>
+  import { login } from '../utils/auth'
   export default {
     data() {
       return {
@@ -30,11 +31,14 @@
       };
     },
     methods: {
-      login() {
+        async login() {
+            login(this.email, this.password);
+        }
+    },
     
-        this.$router.push('/dentistdashboard');
-      }
-    }
+        //this.$router.push('/dentistdashboard');
+      
+    
   };
   </script>
   
