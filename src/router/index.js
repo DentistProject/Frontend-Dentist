@@ -10,8 +10,8 @@ const router = createRouter({
     routes: [
       {
         path: '/',
-        name: 'home',
-        component: HomeView
+        name: 'Login',
+        component: Login
       },
       {
         path: '/dentistdashboard',
@@ -19,9 +19,9 @@ const router = createRouter({
         component: DentistDashboard
       }, 
       {
-        path: '/login',
-        name: 'Login',
-        component: Login
+       
+        name: 'HomeView',
+        component: HomeView
       }
       
          
