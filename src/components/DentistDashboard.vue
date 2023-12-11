@@ -32,7 +32,7 @@ c<template>
                   <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Introduction</span>
                 </a>
               </li>
-              <li
+              <li>
                 <a @click="logout " href="#" class="nav-link px-0 align-middle">
                   <i class="fs-4 bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Sign out</span> 
                 </a>
