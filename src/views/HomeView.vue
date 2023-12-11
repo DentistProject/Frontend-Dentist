@@ -1,12 +1,12 @@
 <script setup>
-import DentistDashboard from '../components/DentistDashboard.vue'
+import Login from '../components/Login.vue'
    
 </script>
 
 <template>
   
    <main >
-    <DentistDashboard />
+    <Login />
 
     
     </main>

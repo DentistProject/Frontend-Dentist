@@ -1,22 +1,43 @@
 <template>
-<div class="register-photo">
-  <div class="form-container">
-      <div class="image-holder"></div>
-      
-      <form method="post">
+    <div class="register-photo">
+      <div class="form-container">
+        <div class="image-holder"></div>
+        
+        <form @submit.prevent="login">
           <h2 class="text-center"><strong>Welcome Dentist System!</strong></h2>
           <h2 class="text-center"><strong>Log In</strong></h2>
-
-          <div class="form-group"><input class="form-control" type="Username" name="Username" placeholder="Username"></div>
-          <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+  
           <div class="form-group">
-             
+            <input class="form-control" type="text" name="email" v-model="email" placeholder="Email">
           </div>
-          <div class="form-group"><button class="btn btn-success btn-block btn-info bt" type="submit">Login</button></div>
-      </form>
-  </div>
-</div>
+          <div class="form-group">
+            <input class="form-control" type="password" name="password" v-model="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-block btn-info bt" type="submit">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </template>
+  
+  <script>
+  export default {
+    data() {
+      return {
+        email: '',
+        password: ''
+      };
+    },
+    methods: {
+      login() {
+    
+        this.$router.push('/dentistdashboard');
+      }
+    }
+  };
+  </script>
+  
   
   
   <style>
