@@ -1,22 +1,54 @@
 <template>
-<div class="register-photo">
-  <div class="form-container">
-      <div class="image-holder"></div>
-      
-      <form method="post">
+    <div class="register-photo">
+      <div class="form-container">
+        <div class="image-holder"></div>
+        
+        <form @submit.prevent="login">
           <h2 class="text-center"><strong>Welcome Dentist System!</strong></h2>
           <h2 class="text-center"><strong>Log In</strong></h2>
-
-          <div class="form-group"><input class="form-control" type="Username" name="Username" placeholder="Username"></div>
-          <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-          <div class="form-group">
-             
+  
+          <div class="form-group ">
+            <input class="form-control" type="text" name="email" v-model="email" placeholder="Email">
           </div>
-          <div class="form-group"><button class="btn btn-success btn-block btn-info bt" type="submit">Login</button></div>
-      </form>
-  </div>
-</div>
+          <div class="form-group input-group">
+          <input :type="passwordFieldType" v-model="password" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <span class="input-group-text" style="cursor: pointer; border: none; background: transparent;" @click="togglePasswordVisibility">
+              <i :class="passwordFieldType === 'password' ? 'bi-eye-slash' : 'bi-eye'"></i>
+            </span>
+          </div>
+        </div>
+          <div class="form-group">
+            <button class="btn btn-success btn-block btn-info bt" @click="login">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </template>
+  
+  <script>
+  import { login } from '../utils/auth'
+  export default {
+    data() {
+      return {
+        email: '',
+        password: '',
+        passwordFieldType: 'password',
+      };
+    },
+    methods: {
+        async login() {
+            login(this.email, this.password);
+        },
+
+        togglePasswordVisibility() {
+            this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
+        }
+    },
+    
+  };
+  </script>
+  
   
   
   <style>
