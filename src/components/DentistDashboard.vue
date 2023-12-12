@@ -16,8 +16,8 @@ c<template>
               </li>
 
               <li>
-                <a  @click="showContent('appointment')" href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Appointment</span>
+                <a   @click="showContent('booking')" href="#" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Booking</span>
                 </a>
               </li>
 
@@ -28,44 +28,35 @@ c<template>
               </li>
 
               <li>
-                <a  @click="showContent('introduction')" href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Introduction</span>
+                <a  @click="showContent('profile')" href="#" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Profile</span>
                 </a>
               </li>
               <li>
-                <a  href="#" class="nav-link px-0 align-middle">
+                <a @click="logout " href="#" class="nav-link px-0 align-middle">
                   <i class="fs-4 bi-box-arrow-right"></i> <span class="ms-1 d-none d-sm-inline">Sign out</span> 
                 </a>
               </li>
-              <li>
-                <a   @click="showContent('booking')" href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-chat-dots"></i> <span class="ms-1 d-none d-sm-inline">Booking</span>
-                </a>
-              </li>
+             
 
             </ul>
           </div>
           
     </div>
           <div class="col py-3">
-        
-        <div v-if="currentContent === 'appointment'">
-          <Appointment />
-        </div>
-
-        <div v-if="currentContent === 'notification'">
-          <Notification />
-        </div>
-
-        <div v-if="currentContent === 'introduction'">
-          <Introduction />
-        </div>
 
         <div v-if="currentContent === 'booking'">
           <Booking />
         </div>
-    
-    
+        
+        <div v-if="currentContent === 'notification'">
+          <Notification />
+        </div>
+
+        <div v-if="currentContent === 'profile'">
+          <Profile />
+        </div>
+
       </div>
 
     </div>
@@ -76,41 +67,43 @@ c<template>
   
   <script>
   import { ref } from 'vue';
- 
-  import Appointment from './Appointment.vue';
   import Notification from './Notification.vue';
-  import Introduction from './Introduction.vue';
+  import Profile from './Profile.vue';
   import Booking from './Booking.vue';
+  import { getToken, logout} from '@/utils/auth';
   
 
 
   
   export default {
     components: {
-    
-      Appointment,
       Notification,
-      Introduction,
+      Profile,
       Booking
 
     },
     setup() {
-      const currentContent = ref('appointment');
+      const currentContent = ref('booking');
   
       const showContent = (contentName) => {
         currentContent.value = contentName;
       };
 
+      const token = getToken();
+      const isUserLoggedIn = !!token;  // check if the user is logged with token
+
       return {
         currentContent,
-        showContent
+        showContent,
+        logout,
+        isUserLoggedIn
       };
     },
         methods: {
 
-            logout() {
-                this.$router.push('/');
-            }
+          logout() {
+            logout();
+          }
     
     }
 }
