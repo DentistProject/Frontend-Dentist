@@ -23,8 +23,10 @@ export const login = (email, password) => {
     .then((response) => {
         const token = response.data.token;
         const dentistId = response.data.dentist.id;
+        const dentistName = response.data.dentist.name;
         localStorage.setItem('token', token); // save token in the localStorage
-        localStorage.setItem('dentistId', dentistId); // save user id in localStorage
+        localStorage.setItem('dentistID', dentistId); // save user id in localStorage
+        localStorage.setItem('dentistName',dentistName);
         console.log("dentistAuthToken:",response.data.token);  
         console.log("dentistInfor:",response.data.dentist);  
         Router.push('/dentistdashboard');
@@ -40,7 +42,7 @@ export const login = (email, password) => {
 export const logout = () => {
     if(confirm("Are you sure you want to logout?")){
       clearToken();
-      localStorage.clear
+      
     
      
         Router.push('/'); //  back to login page
