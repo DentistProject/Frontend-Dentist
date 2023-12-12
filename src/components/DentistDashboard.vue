@@ -28,8 +28,8 @@ c<template>
               </li>
 
               <li>
-                <a  @click="showContent('introduction')" href="#" class="nav-link px-0 align-middle">
-                  <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Introduction</span>
+                <a  @click="showContent('profile')" href="#" class="nav-link px-0 align-middle">
+                  <i class="fs-4 bi-person-circle"></i> <span class="ms-1 d-none d-sm-inline">Profile</span>
                 </a>
               </li>
               <li>
@@ -57,8 +57,8 @@ c<template>
           <Notification />
         </div>
 
-        <div v-if="currentContent === 'introduction'">
-          <Introduction />
+        <div v-if="currentContent === 'profile'">
+          <Profile />
         </div>
 
         <div v-if="currentContent === 'booking'">
@@ -79,7 +79,7 @@ c<template>
  
   import Appointment from './Appointment.vue';
   import Notification from './Notification.vue';
-  import Introduction from './Introduction.vue';
+  import Profile from './Profile.vue';
   import Booking from './Booking.vue';
   import { getToken, logout} from '@/utils/auth';
   
@@ -91,7 +91,7 @@ c<template>
     
       Appointment,
       Notification,
-      Introduction,
+      Profile,
       Booking
 
     },

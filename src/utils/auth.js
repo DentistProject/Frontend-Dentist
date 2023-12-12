@@ -9,7 +9,8 @@ export const getToken = () => {
 
 
 export const clearToken = () => {
-  localStorage.removeItem('token');
+  localStorage.clear();
+
 }
 
 
@@ -29,7 +30,7 @@ export const login = (email, password) => {
         Router.push('/dentistdashboard');
     })
     .catch((error) => {
-        
+        alert("Email or password is incorrect.")
         console.log("Error details:", error);
     });
 }
@@ -39,6 +40,8 @@ export const login = (email, password) => {
 export const logout = () => {
     if(confirm("Are you sure you want to logout?")){
       clearToken();
+      localStorage.clear
+    
      
         Router.push('/'); //  back to login page
     }
