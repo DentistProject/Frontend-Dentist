@@ -3,7 +3,7 @@
       <div class="form-container">
         <div class="image-holder"></div>
         
-        <form @submit.prevent="login">
+        <form @submit.prevent="handllogin">
           <h2 class="text-center"><strong>Welcome Dentist System!</strong></h2>
           <h2 class="text-center"><strong>Log In</strong></h2>
   
