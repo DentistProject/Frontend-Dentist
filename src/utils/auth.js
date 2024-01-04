@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Router from '../router';
+const API_GATEWAY = import.meta.env.VITE_API_GATEWAY;
 
 export const getToken = () => {
   const token = localStorage.getItem('token');
@@ -16,7 +17,7 @@ export const clearToken = () => {
 
 
 export const login = (email, password) => {
-    axios.post('http://localhost:8000/dentist/login/', {
+    axios.post(`http://${API_GATEWAY}:80/dentist/login/`, {
         email: email,
         password: password
     })
@@ -27,8 +28,8 @@ export const login = (email, password) => {
         localStorage.setItem('token', token); // save token in the localStorage
         localStorage.setItem('dentistID', dentistId); // save user id in localStorage
         localStorage.setItem('dentistName',dentistName);
-        console.log("dentistAuthToken:",response.data.token);  
-        console.log("dentistInfor:",response.data.dentist);  
+        // console.log("dentistAuthToken:",response.data.token);  
+        // console.log("dentistInfor:",response.data.dentist);  
         Router.push('/dentistdashboard');
     })
     .catch((error) => {
