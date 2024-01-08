@@ -14,32 +14,49 @@
                     <input type="text" v-model="search" placeholder="Search by patient name" style="margin-right: 5px;">
                     <button class="btn btn-primary" @click="openPostModal">Create Booking</button>
                 </div>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Patient</th>
-                            <th>Dentist</th>
-                            <th>Date</th>
-                            <th>Time</th>
-                            <th>Message</th>
-                            <th>Status</th>
-                            <th>Manage</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="booking in filteredBookings" :key="booking._id">
-                            <td>{{ booking.patientName }}</td>
-                            <td>{{ booking.dentistName }}</td>
-                            <td>{{ booking.date }}</td>
-                            <td>{{ booking.time }}</td>
-                            <td>{{ booking.message }}</td>
-                            <td>{{ booking.status }}</td>
-                            <td> <button class="btn btn-primary" @click="cancelAndReOpenBooking(booking)">Re-Open</button>
-                            </td>
-                            <td> <button class="btn btn-danger" @click="cancelBooking(booking)">Cancel</button> </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="hidden-on-medium-small overflow-x:auto">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Patient</th>
+                                <th>Dentist</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Message</th>
+                                <th>Status</th>
+                                <th>Manage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="booking in filteredBookings" :key="booking._id">
+                                <td>{{ booking.patientName }}</td>
+                                <td>{{ booking.dentistName }}</td>
+                                <td>{{ booking.date }}</td>
+                                <td>{{ booking.time }}</td>
+                                <td>{{ booking.message }}</td>
+                                <td>{{ booking.status }}</td>
+                                <td> <button class="btn btn-primary"
+                                        @click="cancelAndReOpenBooking(booking)">Re-Open</button>
+                                </td>
+                                <td> <button class="btn btn-danger" @click="cancelBooking(booking)">Cancel</button> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="hidden-on-large">
+                    <div class="booking-cards" v-for="booking in filteredBookings" :key="booking._id">
+                        <div class="booking-card">
+                            <p><strong>Patient:</strong> {{ booking.patientName }}</p>
+                            <p><strong>Dentist:</strong> {{ booking.dentistName }}</p>
+                            <p><strong>Date:</strong> {{ booking.date }}</p>
+                            <p><strong>Time:</strong> {{ booking.time }}</p>
+                            <p><strong>Message:</strong> {{ booking.message }}</p>
+                            <p><strong>Status:</strong> {{ booking.status }}</p>
+                            <button class="btn btn-primary" @click="cancelAndReOpenBooking(booking)">Re-Open</button>
+                            <button class="btn btn-danger" @click="cancelBooking(booking)">Cancel</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -183,5 +200,42 @@ export default {
 <style scoped>
 .button-space {
     margin-right: 15px;
+}
+
+/* Define card styles */
+.booking-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.booking-card {
+    width: calc(50% - 20px);
+    /* Adjust the width as needed for medium screens */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Media query for small screens */
+@media (max-width: 767px) {
+    .booking-card {
+        width: 100%;
+    }
+}
+
+/* Define the media query to hide the div on medium and small screens */
+@media (max-width: 991px) {
+    .hidden-on-medium-small {
+        display: none;
+    }
+}
+
+/* Define the media query to hide the div on medium and small screens */
+@media (min-width: 991px) {
+    .hidden-on-large {
+        display: none;
+    }
 }
 </style>
