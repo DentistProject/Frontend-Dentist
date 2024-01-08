@@ -17,18 +17,18 @@ const router = createRouter({
       {
         path: '/dentistdashboard',
         name: 'DentistDashboard',
-        component: DentistDashboard,
-        meta: {requiresAuth: true}
+        component: DentistDashboard
       }, 
       {
        
         name: 'HomeView',
         component: HomeView
-      }
-      
-         
-            
-    
+      },
+      // Add a catch-all route as the last route
+      {
+        path: '/:catchAll(.*)', // Match any route not matched by previous routes
+        redirect: '/', // Redirect to the homepage or another desired route
+      },
   ]
 });
 
