@@ -1,6 +1,6 @@
 # Frontend Dentist
 
-This frontend handles all patient related functions, requesting CRUD operations, and api requests to get map from mapboxgl.
+This frontend handles all dentist related functions, requesting CRUD operations, and api requests to get map from mapboxgl.
 
 # Setup
 
